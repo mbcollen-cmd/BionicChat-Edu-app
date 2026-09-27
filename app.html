@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BionicChat Edu</title>
+<link rel="manifest" href="manifest.json">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400;600&display=swap');
+body{margin:0;background:radial-gradient(circle at top,#1a1a1a 0%,#000000 100%);color:#fff;font-family:'Inter',sans-serif;min-height:100vh;overflow-x:hidden}
+.header{padding:20px;text-align:center;font-family:'Playfair Display',serif;font-size:28px;color:#d4af37;letter-spacing:1px;text-shadow:0 0 20px rgba(212,175,55,0.5)}
+.sub{font-size:12px;color:#a8a8a8;letter-spacing:2px;text-transform:uppercase;margin-top:4px}
+.glass{backdrop-filter:blur(20px);background:linear-gradient(135deg,rgba(255,255,255,0.08),rgba(255,255,255,0.03));border:1px solid rgba(212,175,55,0.3);border-radius:20px;box-shadow:0 8px 32px rgba(0,0,0,0.5),inset 0 1px 0 rgba(255,255,255,0.1);transform:translateZ(0);transition:0.3s}
+.glass:hover{transform:translateY(-4px) scale(1.02);box-shadow:0 16px 48px rgba(212,175,55,0.2)}
+.card{margin:14px 20px;padding:18px;display:flex;align-items:center;gap:16px}
+.lock-card{margin:20px;padding:22px;display:flex;gap:16px;align-items:center;background:linear-gradient(135deg,rgba(212,175,55,0.15),rgba(0,0,0,0.4))}
+.lock-3d{font-size:44px;filter:drop-shadow(0 0 15px gold);animation:float 3s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.progress{height:4px;background:rgba(255,255,255,0.1);border-radius:10px;overflow:hidden;margin-top:8px}
+.fill{height:100%;background:linear-gradient(90deg,#d4af37,#f9e27a);box-shadow:0 0 10px #d4af37}
+.btn{width:90%;margin:10px auto;display:block;padding:16px;border-radius:14px;border:none;font-weight:800;letter-spacing:1px;cursor:pointer}
+.btn-gold{background:linear-gradient(90deg,#d4af37,#f9e27a);color:#000;box-shadow:0 0 20px rgba(212,175,55,0.4)}
+.btn-green{background:linear-gradient(90deg,#16a34a,#22c55e);color:#fff}
+input{width:85%;margin:12px auto;display:block;padding:16px;border-radius:12px;border:1px solid rgba(212,175,55,0.4);background:rgba(0,0,0,0.5);color:#fff;text-align:center;font-size:16px}
+.nav{position:fixed;bottom:0;width:100%;display:flex;justify-content:space-around;padding:12px 0;background:rgba(0,0,0,0.8);backdrop-filter:blur(20px);border-top:1px solid rgba(212,175,55,0.2)}
+.nav div{text-align:center;color:#888;font-size:11px}
+.nav .active{color:#d4af37}
+#chat{height:85vh;display:none}
+iframe{width:100%;height:100%;border:none}
+</style>
+</head>
+<body>
+<div class="header">BionicChat Edu<div class="sub">Accounting Tutor • AI-Powered Learning</div></div>
+
+<div id="paywall">
+<div class="glass lock-card">
+<div class="lock-3d">🔐</div>
+<div><div style="color:#d4af37;font-weight:700;font-size:18px">Secure Lesson Access</div><div style="font-size:12px;color:#aaa;margin-top:4px">Unlock your private tutoring session</div><div style="margin-top:8px;font-size:10px;background:#f5e6a8;color:#000;padding:4px 10px;border-radius:20px;display:inline-block">Encrypted • Private</div></div>
+</div>
+
+<div style="text-align:center;color:#d4af37;font-family:'Playfair Display';font-size:22px;margin:20px 0">Your Learning Path</div>
+
+<div class="glass card"><div style="font-size:28px">📖</div><div style="flex:1"><div style="font-weight:600">Ledger Basics</div><div class="progress"><div class="fill" style="width:65%"></div></div><div style="font-size:11px;color:#aaa;margin-top:4px">65% complete • 12 min left</div></div><div style="color:#d4af37">65%</div></div>
+<div class="glass card"><div style="font-size:28px">📈</div><div style="flex:1"><div style="font-weight:600">Balance Sheets</div><div class="progress"><div class="fill" style="width:40%"></div></div><div style="font-size:11px;color:#aaa;margin-top:4px">40% complete • 20 min left</div></div><div style="color:#d4af37">40%</div></div>
+<div class="glass card"><div style="font-size:28px">🌊</div><div style="flex:1"><div style="font-weight:600">Cash Flow Mastery</div><div class="progress"><div class="fill" style="width:22%"></div></div><div style="font-size:11px;color:#aaa;margin-top:4px">22% complete • 35 min left</div></div><div style="color:#d4af37">22%</div></div>
+
+<input id="code" placeholder="Enter 8-digit code" />
+<button class="btn btn-gold" onclick="unlock()">Unlock</button>
+<div style="text-align:center;color:#666;margin:8px">or</div>
+<button class="btn btn-green" onclick="window.open('https://paystack.com/pay/bionicchat','_blank')">🛡️ Pay with Paystack</button>
+<p style="text-align:center;font-size:10px;color:#666;padding:10px">Secure payment by Paystack • One-time R99 • Instant access</p>
+
+<div style="margin:20px" class="glass card"><div><div style="color:#d4af37;font-weight:700">AI Tutor</div><div style="font-size:11px;color:#22c55e">Active Now</div><div style="margin-top:10px;font-size:13px">Tutor: Let's review debits & credits. Ready for today's 5-min practice quiz?</div></div></div>
+<div style="height:80px"></div>
+</div>
+
+<div id="chat"><iframe src="https://cdn.botpress.cloud/webchat/v2.2/shareable.html?botId=YOUR_BOT_ID_HERE"></iframe></div>
+
+<div class="nav"><div class="active">🎓<br>Learn</div><div>💬<br>Chat</div><div>📊<br>Progress</div><div>👤<br>Profile</div></div>
+
+<script>
+function unlock(){
+ let c=document.getElementById('code').value.toUpperCase();
+ if(c.includes('BIONIC')||c.length>=4){
+  document.getElementById('paywall').style.display='none';
+  document.getElementById('chat').style.display='block';
+  localStorage.setItem('unlocked','yes');
+ } else alert('Invalid code. Use BIONIC2024 to test');
+}
+if(localStorage.getItem('unlocked')=='yes'){document.getElementById('paywall').style.display='none';document.getElementById('chat').style.display='block';}
+</script>
+</body>
+</html>
